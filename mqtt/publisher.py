@@ -3,8 +3,8 @@ import time
 
 broker = "localhost"
 port = 1883
-username = "pranav"
-password ="12345"
+# username = "pranav"
+# password ="12345"
 
 publisher = mqtt.Client("P1")
 # publisher.username_pw_set(username,password)
