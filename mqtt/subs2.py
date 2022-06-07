@@ -7,12 +7,11 @@ def on_message(client, userdata, message):
     # print("message qos=",message.qos)
     # print("message retain flag=",message.retain) 
 
-broker = "mqtt.eclipseprojects.io"
+broker = "localhost"
 port = 1883
 topic = "house/Room_Temp"
 
-subs = mqtt.Client("S1")
-print("smdv jfs")
+subs = mqtt.Client("S2")
 
 subs.connect(broker,port)
 subs.subscribe(topic)
