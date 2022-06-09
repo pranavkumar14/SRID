@@ -158,7 +158,9 @@ class callback : public virtual mqtt::callback,
 		std::cout << "Message arrived" << std::endl;
 		std::cout << "\ttopic: '" << msg->get_topic() << "'" << std::endl;
 		std::cout << "\tpayload: '" << msg->to_string() << "'\n" << std::endl;
-        users[msg->to_string()] =msg->get_topic() ;
+        
+		if(users.find(msg->to_string())==users.end())users[msg->to_string()] =msg->get_topic() ; 
+		else users.erase(msg->to_string());
 	}
 
 	void delivery_complete(mqtt::delivery_token_ptr token) override {}
@@ -203,7 +205,12 @@ int main(int argc, char* argv[])
 
 	// Just block till user tells us to quit.
 
-	while (std::tolower(std::cin.get()) != 'q')
+	while (std::tolower(std::cin.get()) != 'q'){
+		if(std::tolower(std::cin.get()) != 'p'){
+			for (auto x:users) std::cout<<x.first<<" "<<x.second<<"\n";
+		}
+
+	}
 		;
 
 	// Disconnect

@@ -197,9 +197,14 @@ int main(int argc, char* argv[])
 		auto toks = client.get_pending_delivery_tokens();
 		if (!toks.empty())
 			cout << "Error: There are pending delivery tokens!" << endl;
+		
+
+		while (std::tolower(std::cin.get()) != 'q')
+		;
 
 		// Disconnect
 		cout << "\nDisconnecting..." << endl;
+		client.publish(pubmsg)->wait_for(TIMEOUT);
 		client.disconnect()->wait();
 		cout << "  ...OK" << endl;
 	}
