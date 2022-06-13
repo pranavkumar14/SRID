@@ -26,7 +26,7 @@ publisher2 = mqtt.Client("P2")
 publisher.connect(broker,port)
 publisher2.connect("mqtt.eclipseprojects.io",port)
 
-temp=0
+
 with open('data.csv', 'r') as read_obj:
     csv_reader = reader(read_obj)
     for row in csv_reader:
