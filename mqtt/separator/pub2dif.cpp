@@ -1,4 +1,4 @@
-
+//separate data and send to different server.
 
 #if !defined(_WIN32)
 	#include <sys/stat.h>
